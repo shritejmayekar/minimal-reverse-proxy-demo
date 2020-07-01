@@ -25,14 +25,14 @@
       };
     },
     async mounted() {
-      await axios({ method: "GET", "url": "http://localhost/temperature" })
+      await axios({ method: "GET", "url": "/temperature" })
           .then(result => {
             this.temperature = result.data['temperature_c'];
           }, error => {
             console.error(error);
           });
 
-      await axios({ method: "GET", "url": `http://localhost/precipitation?temp=${this.temperature}` })
+      await axios({ method: "GET", "url": `/precipitation?temp=${this.temperature}` })
           .then(result => {
             this.precip_chance = result.data['precip_chance'];
             this.precip_type = result.data['type'];
